@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: tmt-and-testing-farm
+spec:
+  description: >-
+    TODO
+  params:
+    - name: SNAPSHOT
+      description: A list of container images that should undergo testing
+      type: string
+  tasks:
+    - name: run-tf-3
+      taskSpec:
+        steps:
+        - image: quay.io/testing-farm/cli:latest
+          script: |
+            #!/usr/bin/env bash
+
+            echo Hello
+            echo $SNAPSHOT
+
